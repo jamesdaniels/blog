@@ -1,0 +1,20 @@
+---
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+import liteYoutubeEmbedUrl from 'lite-youtube-embed/src/lite-yt-embed.js?url';
+
+export interface Props {
+	id: string;
+	poster?: string;
+	params?: string;
+	playlabel?: string;
+}
+
+const { id, poster, ...attrs } = Astro.props as Props;
+
+const posterURL = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+
+---
+
+<lite-youtube {id} {...attrs} style={`background-image: url('${posterURL}');`}></lite-youtube>
+
+<script src={liteYoutubeEmbedUrl} defer></script>

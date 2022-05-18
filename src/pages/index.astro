@@ -3,7 +3,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
-import { YouTube } from '@astro-community/astro-embed-youtube';
+import YouTube from '../components/Youtube.astro';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -27,9 +27,6 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 		<BaseHead {title} {description} {permalink} />
 
 		<link rel="preconnect" href="https://i.ytimg.com" />
-
-		<!-- drop this preconnect once astro-embed-youtube fixes their NPM problem -->
-		<link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
 		<style>
 			header {
