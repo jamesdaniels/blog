@@ -3,14 +3,15 @@
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
+import { YouTube } from '@astro-community/astro-embed-youtube';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-let title = 'Example Blog';
-let description = 'The perfect starter for your perfect blog.';
-let permalink = 'https://example.com/';
+let title = 'Hi there! I\'m James.';
+let description = 'I\'m a software engineer currently working on Firebase. Welcome to my site.';
+let permalink = 'https://jamesdaniels.net';
 
 // Data Fetching: List all Markdown posts in the repo.
 
@@ -66,6 +67,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 		<div class="wrapper">
 			<main class="content">
 				<section class="intro">
+					<YouTube id="yZ7bblb-6-I" />
 					<h1 class="latest">{title}</h1>
 					<p>{description}</p>
 				</section>

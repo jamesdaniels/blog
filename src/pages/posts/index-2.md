@@ -1,6 +1,6 @@
 ---
 setup: import Layout from '../../layouts/BlogPost.astro'
-title: Hello world!
+title: Hello world again!
 publishDate: 12 Sep 2021
 name: James Daniels
 description: Just a Hello World Post!

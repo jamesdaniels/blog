@@ -7,6 +7,10 @@ export interface Props {
 	permalink: string;
 }
 const { title, description, permalink } = Astro.props;
+
+const firebaseConfig = JSON.parse(import.meta.env.PUBLIC_FIREBASE_CONFIG);
+const isDev = import.meta.env.DEV;
+
 ---
 
 <!-- Global Metadata -->
@@ -37,23 +41,20 @@ const { title, description, permalink } = Astro.props;
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap" />
 
+<script define:vars={{ props: { firebaseConfig, isDev } }}>
+	window.__props = props;
+</script>
+
 <script>
 	import { initializeApp } from 'firebase/app';
-	import { initializeAnalytics, isSupported as isAnalyticsSupported } from 'firebase/analytics';
+	import { initializeAnalytics, isSupported } from 'firebase/analytics';
 	import { initializePerformance } from 'firebase/performance';
 
-	const app = initializeApp({
-		apiKey: "AIzaSyAVuJDZ8s9y4JIAy39l072U9d2BrXGAuHM",
-		authDomain: "jamesdaniels-bea3e.firebaseapp.com",
-		projectId: "jamesdaniels-bea3e",
-		storageBucket: "jamesdaniels-bea3e.appspot.com",
-		messagingSenderId: "514975372526",
-		appId: "1:514975372526:web:f5e9d34ffda44f9fc64fff",
-		measurementId: "G-DP3PKVBL74"
-	});
+	const { firebaseConfig, isDev } = window.__props;
 
-	const isSupported = await isAnalyticsSupported();
-	if (isSupported && !window.location.host.startsWith('localhost')) {
+	const app = initializeApp(firebaseConfig);
+
+	if (!isDev && await isSupported()) {
 		initializeAnalytics(app);
 		initializePerformance(app);
 	}
