@@ -26,6 +26,11 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 	<head>
 		<BaseHead {title} {description} {permalink} />
 
+		<link rel="preconnect" href="https://i.ytimg.com" />
+
+		<!-- drop this preconnect once astro-embed-youtube fixes their NPM problem -->
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
 		<style>
 			header {
 				width: 100%;
