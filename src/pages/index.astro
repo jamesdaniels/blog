@@ -3,6 +3,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
+import Social from '../components/Social.astro';
 import YouTube from '../components/Youtube.astro';
 
 // Component Script:
@@ -10,7 +11,7 @@ import YouTube from '../components/Youtube.astro';
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
 let title = 'Hi there! I\'m James.';
-let description = 'I\'m a software engineer currently working on Firebase. Welcome to my site.';
+let description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
 let permalink = 'https://jamesdaniels.net';
 
 // Data Fetching: List all Markdown posts in the repo.
@@ -39,8 +40,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 			}
 
 			.content {
-				margin-top: 4rem;
-				margin-bottom: 8rem;
+				padding-bottom: 8rem;
 			}
 
 			.content :global(main > * + *) {
@@ -51,6 +51,29 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 				padding-bottom: 4rem;
 				margin-bottom: 2rem;
 				border-bottom: 4px solid var(--theme-divider);
+			}
+
+			.intro > lite-youtube {
+				width: 100%;
+				height: 56.13%;
+				margin-top: 2rem;
+				min-width: 320px;
+				min-height: 180px;
+			}
+
+			@media only screen and (min-width: 720px) {
+				.intro {
+					display: flex;
+					flex-direction: row;
+				}
+				.intro > .left {
+					padding-right: 2rem;
+				}
+				.intro > lite-youtube {
+					width: 60%;
+					height: 33.68%;
+					margin-top: 0;
+				}
 			}
 
 			.intro > * {
@@ -69,9 +92,12 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 		<div class="wrapper">
 			<main class="content">
 				<section class="intro">
+					<div class="left">
+						<h1 class="latest">{title}</h1>
+						<p>I&apos;m a software engineer based out of Cambridge, <abbr title="Massachusetts">MA</abbr> currently working on Firebase. Welcome to my site.</p>
+						<Social />
+					</div>
 					<YouTube id="yZ7bblb-6-I" />
-					<h1 class="latest">{title}</h1>
-					<p>{description}</p>
 				</section>
 				<section aria-label="Blog post list">
 					{allPosts.map((p) => <BlogPostPreview post={p} />)}

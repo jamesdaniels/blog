@@ -15,6 +15,6 @@ const posterURL = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 ---
 
-<lite-youtube {id} {...attrs} style={`background-image: url('${posterURL}');`}></lite-youtube>
+<lite-youtube videoid={id} {...attrs} style={`background-image: url('${posterURL}');`}></lite-youtube>
 
 <script src={liteYoutubeEmbedUrl} defer></script>

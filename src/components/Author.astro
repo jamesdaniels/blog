@@ -1,4 +1,6 @@
 ---
+import Social from "./Social.astro";
+
 export interface Props {
 	name: string;
 	href: string;
@@ -8,10 +10,13 @@ const { name, href } = Astro.props;
 ---
 
 <div class="author">
-	<p><a {href}>{name}</a></p>
+	<p>by <span>{name}</span></p>
 </div>
 
 <style>
+	p span {
+		color: var(--theme-accent);
+	}
 	.author {
 		margin-bottom: 0.75rem;
 	}
