@@ -36,3 +36,25 @@ const { title, description, permalink } = Astro.props;
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap" />
+
+<script>
+	import { initializeApp } from 'firebase/app';
+	import { initializeAnalytics, isSupported as isAnalyticsSupported } from 'firebase/analytics';
+	import { initializePerformance } from 'firebase/performance';
+
+	const app = initializeApp({
+		apiKey: "AIzaSyAVuJDZ8s9y4JIAy39l072U9d2BrXGAuHM",
+		authDomain: "jamesdaniels-bea3e.firebaseapp.com",
+		projectId: "jamesdaniels-bea3e",
+		storageBucket: "jamesdaniels-bea3e.appspot.com",
+		messagingSenderId: "514975372526",
+		appId: "1:514975372526:web:f5e9d34ffda44f9fc64fff",
+		measurementId: "G-DP3PKVBL74"
+	});
+
+	const isSupported = await isAnalyticsSupported();
+	if (isSupported && !window.location.host.startsWith('localhost')) {
+		initializeAnalytics(app);
+		initializePerformance(app);
+	}
+</script>
