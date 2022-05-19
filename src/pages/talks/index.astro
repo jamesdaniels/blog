@@ -11,9 +11,8 @@ talks = talks.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-let title = 'Hi there! I\'m James.';
-let description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
-let permalink = 'https://jamesdaniels-bea3e.web.app';
+let title = 'Talks by James Daniels';
+let description = 'Check out some of my talks over the years.';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -21,7 +20,7 @@ let permalink = 'https://jamesdaniels-bea3e.web.app';
 
 <html lang="en">
 	<head>
-		<BaseHead {title} {description} {permalink} />
+		<BaseHead {title} {description} />
         <style>
         
 			.talks div {

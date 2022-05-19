@@ -4,9 +4,10 @@ import '../styles/blog.css';
 export interface Props {
 	title: string;
 	description: string;
-	permalink: string;
+	permalink?: string;
+	socialPreview?: string;
 }
-const { title, description, permalink } = Astro.props;
+const { title, description, permalink, socialPreview } = Astro.props;
 
 const firebaseConfig = JSON.parse(import.meta.env.PUBLIC_FIREBASE_CONFIG);
 const isDev = import.meta.env.DEV;
@@ -25,23 +26,24 @@ const isDev = import.meta.env.DEV;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={permalink} />
+{ permalink ? <meta property="og:url" content={permalink} /> : ''}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content="/assets/social.png" />
+<meta property="og:image" content={ socialPreview ?? "/assets/social.png" } />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={permalink} />
+{ permalink ? <meta property="twitter:url" content={permalink} /> : ''}
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content="/assets/social.png" />
+<meta property="twitter:image" content={ socialPreview ?? "/assets/social.png" } />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Nunito+Sans:wght@200;400;900&family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
 
+<!-- TODO is there a better way of doing this? -->
 <script define:vars={{ props: { firebaseConfig, isDev } }}>
 	window.__props = props;
 </script>

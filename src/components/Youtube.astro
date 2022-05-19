@@ -17,4 +17,8 @@ const posterURL = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 <lite-youtube videoid={id} {...attrs} style={`background-image: url('${posterURL}');`}></lite-youtube>
 
-<script src={liteYoutubeEmbedUrl} defer></script>
+<script define:vars={{ liteYoutubeEmbedUrl }} defer>
+	document.addEventListener('DOMContentLoaded', () => {
+		if (!customElements.get('lite-youtube')) import(liteYoutubeEmbedUrl);
+	});
+</script>

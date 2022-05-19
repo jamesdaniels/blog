@@ -3,6 +3,7 @@ import Youtube from '../components/Youtube.astro';
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import Social from '../components/Social.astro';
+import Event from '../components/Event.astro';
 
 
 const { content } = Astro.props;
@@ -20,20 +21,69 @@ const permalink = 'https://jamesdaniels-bea3e.web.app/talks/2021/state-of-angula
 	<head>
 		<BaseHead {title} {description} {permalink} />
         <style>
-        </style>
+            header {
+                padding-bottom: 2rem;
+                margin-bottom: 2rem;
+                border-bottom: 4px solid var(--theme-divider);
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .title,
+            .author,
+            .description,
+            .publish-date {
+                margin: 0;
+            }
+
+            .publish-date,
+            .author {
+                color: var(--theme-text-lighter);
+            }
+
+            .title {
+                font-size: 3.25rem;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
+                transform: scale(1, 1.25);
+            }
+
+            .subtitle {
+                font-size: 1.75rem;
+                font-weight: 200;
+                transform: scale(1, 1.25);
+                word-spacing: 0.1em;
+                line-height: 1.75rem;
+                margin: 1rem 0;
+            }
+
+            .description {
+                text-transform: none;
+                font-family: var(--font-serif);
+                color: var(--theme-text-lighter);
+                margin-bottom: 2rem;
+                border-bottom: 1px dashed var(--theme-divider);
+            }
+            </style>
     </head>
     <body>
         <BlogHeader />
 		<div class="wrapper">
+            <header>
+				<h1 class="title">{talkTitle}</h1>
+				<Event name={event} />
+				<p class="publish-date">{date}</p>
+			</header>
 			<main class="content">
-                <h1>{ talkTitle } </h1>
-				<p>{ event }&mdash;{ date }</p>
                 <Youtube id={youtube} />
                 <slot />
-				<footer>
-                    <Social />
-                </footer>
 			</main>
+            <footer>
+                <Social />
+            </footer>
 		</div>
     </body>
 </html>

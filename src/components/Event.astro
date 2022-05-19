@@ -1,0 +1,20 @@
+---
+export interface Props {
+	name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="event">
+	<p>at <span>{name}</span></p>
+</div>
+
+<style>
+    .event span {
+        color: var(--theme-accent);
+    }
+	.event {
+		margin-bottom: 0.75rem;
+	}
+</style>

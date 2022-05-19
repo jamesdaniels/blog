@@ -4,6 +4,6 @@ import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jamesdaniels-bea3e.web.app/',
+  site: 'https://jamesdaniels.net',
   integrations: [sitemap(), compress({ js: false })]
 });

@@ -12,7 +12,6 @@ import YouTube from '../components/Youtube.astro';
 // All variables are available to use in the HTML template below.
 let title = 'Hi there! I\'m James.';
 let description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
-let permalink = 'https://jamesdaniels-bea3e.web.app';
 
 // Data Fetching: List all Markdown posts in the repo.
 
@@ -28,7 +27,7 @@ talks = talks.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a
 
 <html lang="en">
 	<head>
-		<BaseHead {title} {description} {permalink} />
+		<BaseHead {title} {description} />
 
 		<link rel="preconnect" href="https://i.ytimg.com" />
 

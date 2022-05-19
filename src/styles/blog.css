@@ -69,7 +69,6 @@ body.wrapper {
 
 abbr {
 	text-decoration: none;
-    font-style: italic;
 }
 
 :root.theme-dark {
