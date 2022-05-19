@@ -3,6 +3,7 @@ import Youtube from '../../components/Youtube.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import BlogHeader from '../../components/BlogHeader.astro';
 import Social from '../../components/Social.astro';
+import Vimeo from '../../components/Vimeo.astro';
 
 let talks = await Astro.glob('./**/*.md');
 talks = talks.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
@@ -30,7 +31,7 @@ let description = 'Check out some of my talks over the years.';
 			}
 
 			.talks h2 {
-				font-size: 1rem;
+				font-size: 1.25rem;
 				width: 100%;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -47,7 +48,7 @@ let description = 'Check out some of my talks over the years.';
 				margin-top: 1rem;
 			}
 
-			.talks lite-youtube {
+			.talks lite-youtube, .talks lite-vimeo {
 				width: 320px;
 				height: 180px;
 			}
@@ -58,9 +59,10 @@ let description = 'Check out some of my talks over the years.';
 		<div class="wrapper">
 			<main class="content">
                 <section class="talks">
-                    {talks.map(({url, frontmatter: { title, youtube, date, event }}) => <div>
+                    {talks.map(({url, frontmatter: { title, vimeo, youtube, date, event }}) => <div>
 						<h2><a href={url}>{ title }</a></h2>
-						<Youtube id={youtube} />
+						{ youtube ? <Youtube id={youtube} /> : '' }
+						{ vimeo ? <Vimeo id={vimeo} /> : '' }
 						<p>{ event }&mdash;{ date }</p>
 					</div>)}
                 </section>

@@ -1,4 +1,8 @@
 ---
+import { DecodedImage, load } from '@astropub/codecs';
+import { writeFile, mkdir, copyFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 
 export interface Props {
 	id: string;
@@ -9,7 +13,45 @@ export interface Props {
 
 const { id, poster, ...attrs } = Astro.props as Props;
 
-const posterURL = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+let posterURL = poster;
+
+if (!posterURL) {
+	let _memoizedDecoded: DecodedImage<Uint8ClampedArray, number, number> | undefined;
+	const getDecoded = async () => {
+		if (_memoizedDecoded) return _memoizedDecoded;
+		const originalPosterURL = new URL(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
+		const poster = await load(originalPosterURL);
+		const decoded = await poster.decode();
+		_memoizedDecoded = decoded;
+		return decoded;
+	};
+	for (const size of [ 960 ]) {
+		let _memoizedResized: DecodedImage<Uint8ClampedArray, number, number> | undefined;
+		const getResized = async () => {
+			if (_memoizedResized) return _memoizedResized;
+			const decoded = await getDecoded();
+			const resized = await decoded.resize({ width: size });
+			_memoizedResized = resized;
+			return resized;
+		}
+		for (const type of [ 'image/webp' ]) {
+			const ext = type.split('/')[1];
+			const filename = join('youtube', `${id}/${size}.${ext}`);
+			const cachedFilename = join('.asset-cache', filename);;
+			const distFilename = join('dist', 'assets', filename);
+			if (!existsSync(cachedFilename)) {
+				await mkdir(dirname(cachedFilename), { recursive: true });
+				const resized = await getResized();
+				// TODO fix the type
+				const encoded = await resized.encode(type as any, { quality: 80 });
+				await writeFile(cachedFilename, encoded.data);
+			}
+			await mkdir(dirname(distFilename), { recursive: true });
+			await copyFile(cachedFilename, distFilename);
+		}
+	}
+	posterURL = `/assets/youtube/${id}/960.webp`;
+}
 
 ---
 

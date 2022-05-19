@@ -1,5 +1,5 @@
 ---
-setup: import Layout from '../../../layouts/Youtube.astro'
+setup: import Layout from '../../../layouts/Talk.astro'
 title: Adventures in Universal and Zone.js
 date: 20 April 2018
 event: ng-conf

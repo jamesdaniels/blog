@@ -39,21 +39,15 @@ const isDev = import.meta.env.DEV;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ socialPreview ?? "/assets/social.png" } />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Nunito+Sans:wght@200;400;900&family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
-
 <script define:vars={{ props: { firebaseConfig, isDev } }}>
 	window.__props = props;
 </script>
 
 <script>
-	import 'lite-youtube-embed';
 	import { initializeApp } from 'firebase/app';
 	import { initializeAnalytics, isSupported } from 'firebase/analytics';
 	import { initializePerformance } from 'firebase/performance';
-s
+
 	const { firebaseConfig, isDev } = window.__props;
 
 	const app = initializeApp(firebaseConfig);
@@ -63,4 +57,7 @@ s
 		await import('first-input-delay');
 		initializePerformance(app);
 	}
+
+	import('lite-youtube-embed');
+	import('lite-vimeo-embed');
 </script>

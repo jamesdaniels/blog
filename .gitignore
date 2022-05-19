@@ -18,5 +18,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# Windows files
+*:Zone.Identifier
+
 .firebase/
 firebase-debug.log*
+.asset-cache/
