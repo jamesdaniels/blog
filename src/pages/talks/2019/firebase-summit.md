@@ -1,5 +1,5 @@
 ---
-setup: import Layout from '../../../layouts/Youtube.astro'
+setup: import Layout from '../../../layouts/Talk.astro'
 title: How media companies are transforming their digital experiences
 date: 26 Sept 2019
 event: Firebase Summit

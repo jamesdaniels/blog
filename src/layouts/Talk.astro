@@ -4,9 +4,10 @@ import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import Social from '../components/Social.astro';
 import Event from '../components/Event.astro';
+import Vimeo from '../components/Vimeo.astro';
 
 const { content } = Astro.props;
-const { title, date, event, youtube } = content;
+const { title, date, event, youtube, vimeo } = content;
 
 const description = `${event} on ${date}.`;
 
@@ -42,10 +43,11 @@ const description = `${event} on ${date}.`;
             }
 
             .title {
-                font-size: 3.25rem;
+                font-size: 1.75rem;
                 font-weight: 900;
                 letter-spacing: 0.1rem;
                 transform: scale(1, 1.25);
+                margin-bottom: 1rem;
             }
 
             .subtitle {
@@ -64,7 +66,7 @@ const description = `${event} on ${date}.`;
                 margin-bottom: 2rem;
                 border-bottom: 1px dashed var(--theme-divider);
             }
-            </style>
+        </style>
     </head>
     <body>
         <BlogHeader />
@@ -75,7 +77,8 @@ const description = `${event} on ${date}.`;
 				<p class="publish-date">{date}</p>
 			</header>
 			<main class="content">
-                <Youtube id={youtube} />
+                { youtube ? <Youtube id={youtube} /> : '' }
+                { vimeo ? <Vimeo id={vimeo} /> : '' }
                 <slot />
 			</main>
             <footer>

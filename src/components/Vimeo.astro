@@ -1,0 +1,15 @@
+---
+
+export interface Props {
+	id: string;
+	poster?: string;
+	params?: string;
+	playlabel?: string;
+}
+
+const { id, poster, ...attrs } = Astro.props as Props;
+const posterURL = poster || `https://i.vimeocdn.com/video/${id}.webp?mw=1600&mh=900&q=70`;
+
+---
+
+<lite-vimeo videoid={id} {...attrs} style={`background-image: url('${posterURL}');`}></lite-vimeo>
