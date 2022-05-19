@@ -1,6 +1,6 @@
 ---
 setup: import Layout from '../../../layouts/Youtube.astro'
-title: Media companies digital expiriences
+title: How media companies are transforming their digital experiences
 date: 26 Sept 2019
 event: Firebase Summit
 youtube: vQxNDp_oA9Q
