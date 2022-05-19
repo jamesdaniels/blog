@@ -48,6 +48,6 @@ The CLI will run your NPM build script but in order to know where the assets des
 
 With that, Firebase knows how to build and deploy an Astro app by your simply calling _firebase deploy_. 
 
-Give the [out new support for web frameworks a spin today](https://github.com/FirebaseExtended/firebase-framework-tools) &amp; file an issue on Github if you run into any trouble.
+Give the [new tooling for web frameworks a spin today](https://github.com/FirebaseExtended/firebase-framework-tools) &amp; file an issue on Github if you run into any trouble.
 
 Happy coding!&mdash;James
