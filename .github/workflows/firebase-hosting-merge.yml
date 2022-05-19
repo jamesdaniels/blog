@@ -18,6 +18,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: .asset-cache
+          key: .asset-cache/v1
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
