@@ -10,7 +10,7 @@ socialPreview: /assets/posts/hello-world.png
 I've actually built a website, for myself.
 
 
-It's built on Astro, Firebase Hosting, and Github Actions. It's leaning on Firebase CLI's Web Framework support&mdash;[now in preview](https://github.com/FirebaseExtended/firebase-framework-tools). Something I've been working on very hard lately.
+It's built on Astro, Firebase Hosting, and Github Actions. It's leaning on Firebase CLI's Web Framework support&mdash;[now in preview](https://github.com/FirebaseExtended/firebase-framework-tools).
 
 Enable it in the latest version of _firebase-tools_:
 

@@ -1,6 +1,4 @@
 ---
-import 'lite-youtube-embed/src/lite-yt-embed.css';
-import liteYoutubeEmbedUrl from 'lite-youtube-embed/src/lite-yt-embed.js?url';
 
 export interface Props {
 	id: string;
@@ -16,9 +14,3 @@ const posterURL = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 ---
 
 <lite-youtube videoid={id} {...attrs} style={`background-image: url('${posterURL}');`}></lite-youtube>
-
-<script define:vars={{ liteYoutubeEmbedUrl }} defer>
-	document.addEventListener('DOMContentLoaded', () => {
-		if (!customElements.get('lite-youtube')) import(liteYoutubeEmbedUrl);
-	});
-</script>

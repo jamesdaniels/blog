@@ -1,5 +1,7 @@
 ---
 import '../styles/blog.css';
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+import liteYoutubeEmbedUrl from 'lite-youtube-embed/src/lite-yt-embed.js?url';
 
 export interface Props {
 	title: string;
@@ -43,8 +45,7 @@ const isDev = import.meta.env.DEV;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Nunito+Sans:wght@200;400;900&family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
 
-<!-- TODO is there a better way of doing this? -->
-<script define:vars={{ props: { firebaseConfig, isDev } }}>
+<script define:vars={{ props: { firebaseConfig, isDev, liteYoutubeEmbedUrl } }}>
 	window.__props = props;
 </script>
 
@@ -53,7 +54,7 @@ const isDev = import.meta.env.DEV;
 	import { initializeAnalytics, isSupported } from 'firebase/analytics';
 	import { initializePerformance } from 'firebase/performance';
 
-	const { firebaseConfig, isDev } = window.__props;
+	const { firebaseConfig, isDev, liteYoutubeEmbedUrl } = window.__props;
 
 	const app = initializeApp(firebaseConfig);
 
@@ -62,4 +63,8 @@ const isDev = import.meta.env.DEV;
 		await import('first-input-delay');
 		initializePerformance(app);
 	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		import(/* @vite-ignore */ liteYoutubeEmbedUrl);
+	});
 </script>
