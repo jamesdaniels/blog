@@ -1,0 +1,39 @@
+---
+import Youtube from '../components/Youtube.astro';
+import BaseHead from '../components/BaseHead.astro';
+import BlogHeader from '../components/BlogHeader.astro';
+import Social from '../components/Social.astro';
+
+
+const { content } = Astro.props;
+const { title: talkTitle, date, event, youtube } = content;
+
+const title = `${talkTitle} | ${event} | ${date}`;
+const description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
+const permalink = 'https://jamesdaniels-bea3e.web.app/talks/2021/state-of-angular';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<BaseHead {title} {description} {permalink} />
+        <style>
+        </style>
+    </head>
+    <body>
+        <BlogHeader />
+		<div class="wrapper">
+			<main class="content">
+                <h1>{ talkTitle } </h1>
+				<p>{ event }&mdash;{ date }</p>
+                <Youtube id={youtube} />
+                <slot />
+				<footer>
+                    <Social />
+                </footer>
+			</main>
+		</div>
+    </body>
+</html>

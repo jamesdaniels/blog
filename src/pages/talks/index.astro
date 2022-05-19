@@ -1,8 +1,11 @@
 ---
-// Component Imports
+import Youtube from '../../components/Youtube.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import BlogHeader from '../../components/BlogHeader.astro';
 import Social from '../../components/Social.astro';
+
+let talks = await Astro.glob('./**/*.md');
+talks = talks.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -19,13 +22,48 @@ let permalink = 'https://jamesdaniels-bea3e.web.app';
 <html lang="en">
 	<head>
 		<BaseHead {title} {description} {permalink} />
+        <style>
+        
+			.talks div {
+				display: inline-block;
+				width: 320px;
+				margin: 0 2rem 2rem 0;
+			}
+
+			.talks h2 {
+				font-size: 1rem;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.talks h2 a {
+				color: var(--theme-text);
+			}
+
+			.talks p {
+				font-size: 0.75rem;
+				color: var(--theme-text-lighter);
+				margin-top: 1rem;
+			}
+
+			.talks lite-youtube {
+				width: 320px;
+				height: 180px;
+			}
+        </style>
     </head>
     <body>
         <BlogHeader />
 		<div class="wrapper">
 			<main class="content">
-                <section>
-                    I&apos;ll have something here soon&hellip;
+                <section class="talks">
+                    {talks.map(({url, frontmatter: { title, youtube, date, event }}) => <div>
+						<h2><a href={url}>{ title }</a></h2>
+						<Youtube id={youtube} />
+						<p>{ event }&mdash;{ date }</p>
+					</div>)}
                 </section>
                 <footer>
                     <Social />

@@ -19,9 +19,9 @@ const { title, description, publishDate, heroImage, alt, subtitle } = Astro.prop
 		<div>
 			<header>
 				{heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
-				<p class="description">{ description }</p>
+				{description ? <p class="description">{ description }</p> : ''}
 				<h1 class="title">{title}</h1>
-				<p class="subtitle">{ subtitle }</p>
+				{subtitle ? <p class="subtitle">{ subtitle }</p> : ''}
 				<Author name="James Daniels" />
 				<p class="publish-date">{publishDate}</p>
 			</header>
@@ -43,10 +43,6 @@ const { title, description, publishDate, heroImage, alt, subtitle } = Astro.prop
 		margin-top: 2rem;
 		margin-bottom: 4rem;
 		max-width: 1280px;
-	}
-
-	.content {
-		padding-bottom: 8rem;
 	}
 
 	.content :global(main > * + *) {

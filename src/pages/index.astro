@@ -19,6 +19,9 @@ let permalink = 'https://jamesdaniels-bea3e.web.app';
 let allPosts = await Astro.glob('./posts/*.md');
 allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()).slice(0, 1);
 
+let talks = await Astro.glob('./talks/**/*.md');
+talks = talks.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 3);
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
@@ -84,6 +87,35 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 				font-size: 2.5rem;
 				font-weight: 700;
 			}
+
+			.talks div {
+				display: inline-block;
+				width: 320px;
+				margin: 0 2rem 2rem 0;
+			}
+
+			.talks h2 {
+				font-size: 1rem;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.talks h2 a {
+				color: var(--theme-text);
+			}
+
+			.talks p {
+				font-size: 0.75rem;
+				color: var(--theme-text-lighter);
+				margin-top: 1rem;
+			}
+
+			.talks lite-youtube {
+				width: 320px;
+				height: 180px;
+			}
 		</style>
 	</head>
 
@@ -100,7 +132,16 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 					<YouTube id="yZ7bblb-6-I" />
 				</section>
 				<section aria-label="Blog post list">
+					<h1>Latest ramblings</h1>
 					{allPosts.map((p) => <BlogPostPreview post={p} />)}
+				</section>
+				<section class="talks">
+					<h1>Recent talks</h1>
+					{talks.map(({url, frontmatter: { title, youtube, date, event }}) => <div>
+						<h2><a href={url}>{ title }</a></h2>
+						<YouTube id={youtube} />
+						<p>{ event }&mdash;{ date }</p>
+					</div>)}
 				</section>
 			</main>
 		</div>
