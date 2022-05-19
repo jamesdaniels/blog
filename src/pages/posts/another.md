@@ -1,9 +1,10 @@
 ---
 setup: import Layout from '../../layouts/BlogPost.astro'
-title: Hello world again!
-publishDate: 12 Sep 2021
+title: Hello world
+publishDate: 22 Sep 2022
 name: James Daniels
-description: Just a Hello World Post!
+subtitle: Astro-style
+description: I've actually put something on this domain... let's see if I can keep it up
 ---
 
 This is so cool!

@@ -1,0 +1,33 @@
+---
+// Component Imports
+import BaseHead from '../../components/BaseHead.astro';
+import BlogHeader from '../../components/BlogHeader.astro';
+import Social from '../../components/Social.astro';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Hi there! I\'m James.';
+let description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
+let permalink = 'https://jamesdaniels-bea3e.web.app';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<BaseHead {title} {description} {permalink} />
+    </head>
+    <body>
+        <BlogHeader />
+		<div class="wrapper">
+			<main class="content">
+                <footer>
+                    <Social />
+                </footer>
+			</main>
+		</div>
+    </body>
+</html>

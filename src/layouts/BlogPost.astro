@@ -5,7 +5,7 @@ import BlogPost from '../components/BlogPost.astro';
 import 'prism-themes/themes/prism-lucario.css';
 
 const { content } = Astro.props;
-const { title, description, publishDate, author, heroImage, permalink, alt } = content;
+const { title, description, publishDate, heroImage, permalink, alt, subtitle } = content;
 ---
 
 <html lang={content.lang || 'en'}>
@@ -16,7 +16,7 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 	<body>
 		<BlogHeader />
 		<div class="wrapper">
-			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
+			<BlogPost {title} {description} {heroImage} {publishDate} {alt} {subtitle}>
 				<slot />
 			</BlogPost>
 		</div>

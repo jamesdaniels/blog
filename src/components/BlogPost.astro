@@ -4,13 +4,14 @@ import Social from './Social.astro';
 
 export interface Props {
 	title: string;
-	author: string;
+	description: string;
+	subtitle: string;
 	publishDate: string;
 	heroImage: string;
 	alt: string;
 }
 
-const { title, author, publishDate, heroImage, alt } = Astro.props;
+const { title, description, publishDate, heroImage, alt, subtitle } = Astro.props;
 ---
 
 <div class="layout">
@@ -18,9 +19,11 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 		<div>
 			<header>
 				{heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
-				<p class="publish-date">{publishDate}</p>
+				<p class="description">{ description }</p>
 				<h1 class="title">{title}</h1>
+				<p class="subtitle">{ subtitle }</p>
 				<Author name="James Daniels" />
+				<p class="publish-date">{publishDate}</p>
 			</header>
 			<main>
 				<slot />
@@ -42,14 +45,6 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 		max-width: 1280px;
 	}
 
-	@media (max-width: 50em) {
-		.hero-image {
-			height: 260px;
-			margin-top: 0;
-			margin-bottom: 2rem;
-		}
-	}
-
 	.content {
 		padding-bottom: 8rem;
 	}
@@ -66,15 +61,6 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 		padding-bottom: 2rem;
 		margin-bottom: 2rem;
 		border-bottom: 4px solid var(--theme-divider);
-	}
-
-	footer {
-		padding-top: 2rem;
-		margin-top: 2rem;
-		border-top: 4px solid var(--theme-divider);
-	}
-
-	header, footer {
 		display: flex;
 		flex-direction: column;
 		text-align: center;
@@ -84,6 +70,7 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 
 	.title,
 	.author,
+	.description,
 	.publish-date {
 		margin: 0;
 	}
@@ -96,6 +83,34 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 	.title {
 		font-size: 3.25rem;
 		font-weight: 900;
-		letter-spacing: 0.3rem;
+		letter-spacing: 0.1rem;
+		transform: scale(1, 1.25);
+	}
+
+	.subtitle {
+		font-size: 1.75rem;
+		font-weight: 200;
+		transform: scale(1, 1.25);
+		word-spacing: 0.1em;
+		line-height: 1.75rem;
+		margin: 1rem 0;
+	}
+
+	.description {
+		text-transform: none;
+		font-family: var(--font-serif);
+		color: var(--theme-text-lighter);
+		margin-bottom: 2rem;
+		border-bottom: 1px dashed var(--theme-divider);
+	}
+
+	
+
+	@media (max-width: 50em) {
+		.hero-image {
+			height: 260px;
+			margin-top: 0;
+			margin-bottom: 2rem;
+		}
 	}
 </style>

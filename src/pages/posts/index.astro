@@ -1,0 +1,49 @@
+---
+// Component Imports
+import BaseHead from '../../components/BaseHead.astro';
+import BlogHeader from '../../components/BlogHeader.astro';
+import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import Social from '../../components/Social.astro';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Hi there! I\'m James.';
+let description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
+let permalink = 'https://jamesdaniels-bea3e.web.app';
+
+// Data Fetching: List all Markdown posts in the repo.
+
+let allPosts = await Astro.glob('./*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<BaseHead {title} {description} {permalink} />
+        <style is:global>
+            main section article.post-preview:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <BlogHeader />
+		<div class="wrapper">
+			<main class="content">
+				<section aria-label="Blog post list">
+					{allPosts.map((p) => <BlogPostPreview post={p} />)}
+				</section>
+                <footer>
+                    <Social />
+                </footer>
+			</main>
+		</div>
+    </body>
+</html>
