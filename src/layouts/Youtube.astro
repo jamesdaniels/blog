@@ -5,13 +5,10 @@ import BlogHeader from '../components/BlogHeader.astro';
 import Social from '../components/Social.astro';
 import Event from '../components/Event.astro';
 
-
 const { content } = Astro.props;
-const { title: talkTitle, date, event, youtube } = content;
+const { title, date, event, youtube } = content;
 
-const title = `${talkTitle} | ${event} | ${date}`;
-const description = 'I\'m a software engineer based out of Cambridge, MA currently working on Firebase. Welcome to my site.';
-const permalink = 'https://jamesdaniels-bea3e.web.app/talks/2021/state-of-angular';
+const description = `${event} on ${date}.`;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -19,7 +16,7 @@ const permalink = 'https://jamesdaniels-bea3e.web.app/talks/2021/state-of-angula
 
 <html lang="en">
 	<head>
-		<BaseHead {title} {description} {permalink} />
+		<BaseHead {title} {description} />
         <style>
             header {
                 padding-bottom: 2rem;
