@@ -9,8 +9,9 @@ socialPreview: /assets/posts/hello-world.png
 
 I've actually built a website, for myself.
 
-
 It's built on Astro, Firebase Hosting, and Github Actions. It's leaning on Firebase CLI's Web Framework support&mdash;[now in preview](https://github.com/FirebaseExtended/firebase-framework-tools).
+
+## Want to give web frameworks a spin?
 
 Enable it in the latest version of _firebase-tools_:
 
@@ -20,7 +21,7 @@ $ firebase --open-sesame frameworkawareness
 
 <p style="color: var(--theme-text-lighter)">You can use the <em>FIREBASE_CLI_PREVIEWS</em> environment variable to enable the feature flag in <abbr title="Continuous Integration">CI</abbr>/<abbr title="Continuous Deployment">CD</abbr>.</p>
 
-Using the _hosting.source_ option in _firebase.json_&mdash;rather than _hosting.public_&mdash; informs the Firebase CLI that it should try to built your web application.
+Using the _hosting.source_ option in _firebase.json_&mdash;rather than _hosting.public_&mdash;informs the Firebase CLI that it should try to built your web application.
 
 ```json
 // firebase.json
@@ -48,6 +49,6 @@ The CLI will run your NPM build script but in order to know where the assets des
 
 With that, Firebase knows how to build and deploy an Astro app by your simply calling _firebase deploy_. 
 
-Give the [new tooling for web frameworks a spin today](https://github.com/FirebaseExtended/firebase-framework-tools) &amp; file an issue on Github if you run into any trouble.
+Give the [new tooling for web frameworks a spin today](https://github.com/FirebaseExtended/firebase-framework-tools) &amp; file an issue on Github if you run into any trouble. [This site is open-source as well, if you wanted to poke around](https://github.com/jamesdaniels/blog).
 
 Happy coding!&mdash;James
