@@ -101,7 +101,7 @@
 }
 
 html {
-	background: var(--theme-bg);
+	background-color: var(--theme-bg);
 	background-image: linear-gradient(30deg, rgb(13, 14, 15) 12%, transparent 12.5%, transparent 87%, rgb(13, 14, 15) 87.5%, rgb(13, 14, 15)), linear-gradient(150deg, rgb(13, 14, 15) 12%, transparent 12.5%, transparent 87%, rgb(13, 14, 15) 87.5%, rgb(13, 14, 15)), linear-gradient(30deg, rgb(13, 14, 15) 12%, transparent 12.5%, transparent 87%, rgb(13, 14, 15) 87.5%, rgb(13, 14, 15)), linear-gradient(150deg, rgb(13, 14, 15) 12%, transparent 12.5%, transparent 87%, rgb(13, 14, 15) 87.5%, rgb(13, 14, 15)), linear-gradient(60deg, rgba(13, 14, 15, 0.467) 25%, transparent 25.5%, transparent 75%, rgba(13, 14, 15, 0.467) 75%, rgba(13, 14, 15, 0.467)), linear-gradient(60deg, rgba(13, 14, 15, 0.467) 25%, transparent 25.5%, transparent 75%, rgba(13, 14, 15, 0.467) 75%, rgba(13, 14, 15, 0.467));
     background-size: 80px 140px;
     background-position: 0px 0px, 0px 0px, 40px 70px, 40px 70px, 0px 0px, 40px 70px;
@@ -114,7 +114,7 @@ body {
 }
 
 body.wrapper {
-	background: var(--theme-bg);
+	background-color: var(--theme-bg);
 }
 
 abbr {
