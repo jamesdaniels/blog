@@ -32,9 +32,9 @@ Using the _hosting.source_ option in _firebase.json_&mdash;rather than _hosting.
 }
 ```
 
-Today the Firebase CLI has built-in support for Next.js, Angular, and Nuxt. No additional configuration is needed for them, however we've not added firebase-class support for Astro&mdash;yet.
+No additional configuration is needed for Next.js, Nuxt, and Angular, however we've not added first-class support for Astro&mdash;yet.
 
-The CLI will run your build script but in order to know where the assets destined for Firebase Hosting have been placed we need to add  _directories.serve_ to our _package.json_:
+The CLI will run your NPM build script but in order to know where the assets destined for Firebase Hosting have been placed, you need to add  _directories.serve_ to your _package.json_:
 
 ```json
 // package.json
@@ -47,5 +47,9 @@ The CLI will run your build script but in order to know where the assets destine
 ```
 
 With that, Firebase knows how to build and deploy an Astro app by your simply calling _firebase deploy_.
+
+The new tooling supports SSR too but I'll leave that for another day.
+
+Give the [new Web Frameworks tooling for Firebase Hosting a spin today](https://github.com/FirebaseExtended/firebase-framework-tools) &amp; and file an issue if you run into any trouble.
 
 Happy coding!&mdash;James
