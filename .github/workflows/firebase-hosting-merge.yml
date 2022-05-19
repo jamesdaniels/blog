@@ -17,7 +17,7 @@ jobs:
       - run: npm ci
       - uses: actions/cache@v3
         with:
-          path: .asset-cache
+          path: ./.asset-cache
           key: .asset-cache/v1
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
