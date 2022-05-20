@@ -109,7 +109,7 @@ html {
 
 body {
 	color: var(--theme-text);
-	background: linear-gradient(to bottom right, rgba(var(--theme-bg-rgb),0.5), rgba(var(--theme-bg-rgb),1));
+	background: linear-gradient(to bottom right, rgba(var(--theme-bg-rgb),0.5), rgba(var(--theme-bg-rgb),1), rgba(var(--theme-bg-rgb),1));
 	min-height: 100vh;
 }
 
