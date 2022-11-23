@@ -26,4 +26,4 @@ jobs:
           channelId: live
           projectId: jamesdaniels-bea3e
         env:
-          FIREBASE_CLI_PREVIEWS: frameworkawareness
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
